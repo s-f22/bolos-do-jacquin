@@ -1,0 +1,84 @@
+/* src/components/CakeCategories.css */
+.cake-container {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 40px;
+  background-color: #faf7f2;
+  border-radius: .5rem;
+}
+
+.cake-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 250px;
+}
+
+/* .cake-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+} */
+
+.cake-card h3 {
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.cake-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.cake-card:hover img {
+  /* transform: scale(1.05); */
+  transition: transform 0.4s ease;
+}
+
+.cake-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cake-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cake-image-container h3 {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5); /* fundo escuro transparente */
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media (max-width: 1250px) {
+  .cake-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cake-container {
+    grid-template-columns: 1fr;
+  }
+}

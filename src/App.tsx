@@ -5,16 +5,16 @@ import { CreateCake } from "./pages/CreateCake.tsx";
 import { EditCake } from "./pages/EditCake.tsx";
 import { CakeDetails } from "./pages/CakeDetails.tsx";
 import './App.css'
-import { Header } from "./components/Header.tsx";
+import { Footer } from "./components/Footer.tsx";
 import { Login } from "./pages/Login.tsx";
 import { PrivateRoute } from "./components/PrivateRoute.tsx";
+import { CakeCategories } from "./components/CakeCategories.tsx";
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
@@ -37,6 +37,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )

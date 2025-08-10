@@ -1,16 +1,38 @@
 import { useEffect, useState } from "react";
 import type { Cake } from "../types/Cake";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import interceptor from "../services/interceptor";
+import { Carousel } from "react-bootstrap";
+
+interface CarouselItem {
+  id: string;
+  name: string;
+  images: string;
+}
+
 
 export const CakeList = () => {
   const [cakes, setCakes] = useState<Cake[]>([]);
+  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
   const navigate = useNavigate();
 
   const getData = async () => {
     try {
       const response = await interceptor.get("http://localhost:3000/cakes");
       setCakes(response.data);
+
+      const allImagesWithInfo: CarouselItem[] = response.data.flatMap((cake: Cake) =>
+          cake.images.map((img) => ({
+            id: String(cake.id),
+            name: cake.name,
+            images: img,
+          }))
+        );
+
+        const shuffled = allImagesWithInfo.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 5);
+        setCarouselItems(selected);
+        
     } catch (error) {
       console.error("Erro ao buscar os dados: ", error);
     }
@@ -22,6 +44,27 @@ export const CakeList = () => {
 
   return (
     <>
+      {/* Carrossel */}
+      {carouselItems.length > 0 && (
+        <Carousel className="mt-4">
+          {carouselItems.map((item, idx) => (
+            <Carousel.Item key={idx}>
+              <Link to={`/cakes/${item.id}`}>
+                <img
+                  className="d-block w-100 rounded"
+                  src={item.images}
+                  alt={item.name}
+                  style={{ maxHeight: "400px", objectFit: "cover" }}
+                />
+                <Carousel.Caption className="bg-dark bg-opacity-50 rounded p-2">
+                  <h5 className="text-white">{item.name}</h5>
+                </Carousel.Caption>
+              </Link>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      )}
+
       <div className="container mt-4">
         <h2>Nossos Bolos</h2>
         <div className="row mt-4">
