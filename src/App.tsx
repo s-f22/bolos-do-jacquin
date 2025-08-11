@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/cakes" element={<CakeList />} />
+          <Route path="/cakes/:category" element={<CakeList />} />
           <Route
             path="/cakes/create"
             element={
@@ -27,7 +27,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/cakes/:id" element={<CakeDetails />} />
+          <Route path="/cakes/:category/:id" element={<CakeDetails />} />
           <Route
             path="/cakes/:id/edit"
             element={

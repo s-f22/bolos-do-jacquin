@@ -1,6 +1,7 @@
 // src/components/CakeCategories.tsx
 import React from "react";
 import "./CakeCategories.css";
+import { Link } from "react-router-dom";
 
 type CakeCategory = {
   id: string;
@@ -18,15 +19,18 @@ const categories: CakeCategory[] = [
 ];
 
 export const CakeCategories: React.FC = () => {
+
   return (
     <div className="cake-container">
       {categories.map((category) => (
-        <div key={category.id} className="cake-card">
-          <div className="cake-image-container">
-            <img src={category.image} alt={category.title} />
-            <h3>{category.title}</h3>
+        <Link to={`/cakes/${category.id}`}>
+          <div key={category.id} className="cake-card">
+            <div className="cake-image-container">
+              <img src={category.image} alt={category.title} />
+              <h3>{category.title}</h3>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Cake } from "../types/Cake";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import interceptor from "../services/interceptor";
 import { Carousel } from "react-bootstrap";
+import { Header } from "../components/Header";
 
 interface CarouselItem {
   id: string;
@@ -15,28 +16,37 @@ export const CakeList = () => {
   const [cakes, setCakes] = useState<Cake[]>([]);
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
   const navigate = useNavigate();
+  const { category } = useParams();
 
   const getData = async () => {
     try {
       const response = await interceptor.get("http://localhost:3000/cakes");
-      setCakes(response.data);
 
-      const allImagesWithInfo: CarouselItem[] = response.data.flatMap((cake: Cake) =>
-          cake.images.map((img) => ({
-            id: String(cake.id),
-            name: cake.name,
-            images: img,
-          }))
-        );
+      // Filtragem
+      const filtrados: Cake[] = category
+        ? response.data.filter((c: Cake) => c.category.includes(category))
+        : response.data;
 
-        const shuffled = allImagesWithInfo.sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 5);
-        setCarouselItems(selected);
-        
+      setCakes(filtrados);
+
+      const allImagesWithInfo: CarouselItem[] = filtrados.flatMap((cake: Cake) =>
+        cake.images.map((img) => ({
+          id: String(cake.id),
+          name: cake.name,
+          images: img,
+        }))
+      );
+
+      // Aleatoriza e seleciona os primeiros 5
+      const shuffled = allImagesWithInfo.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 5);
+      setCarouselItems(selected);
+
     } catch (error) {
       console.error("Erro ao buscar os dados: ", error);
     }
   };
+
 
   useEffect(() => {
     getData();
@@ -44,12 +54,13 @@ export const CakeList = () => {
 
   return (
     <>
+      <Header />
       {/* Carrossel */}
       {carouselItems.length > 0 && (
-        <Carousel className="mt-4">
+        <Carousel style={{ marginTop: "56px" }}>
           {carouselItems.map((item, idx) => (
             <Carousel.Item key={idx}>
-              <Link to={`/cakes/${item.id}`}>
+              <Link to={`/cakes/${category}/${item.id}`}>
                 <img
                   className="d-block w-100 rounded"
                   src={item.images}
@@ -72,7 +83,7 @@ export const CakeList = () => {
             <div
               className="col-md-4 mb-4"
               key={cake.id}
-              onClick={() => navigate(`/cakes/${cake.id}`)}
+              onClick={() => navigate(`/cakes/${category}/${cake.id}`)}
               style={{ cursor: "pointer" }}
             >
               <div className="card h-100">
