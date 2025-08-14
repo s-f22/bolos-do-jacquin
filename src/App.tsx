@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { CakeList } from "./pages/CakeList.tsx";
-import { CreateCake } from "./pages/CreateCake.tsx";
+import { CreateCake } from "./pages/Create.tsx";
 import { EditCake } from "./pages/EditCake.tsx";
 import { CakeDetails } from "./pages/CakeDetails.tsx";
 import './App.css'
@@ -22,9 +22,7 @@ function App() {
           <Route
             path="/cakes/create"
             element={
-              <PrivateRoute>
                 <CreateCake />
-              </PrivateRoute>
             }
           />
           <Route path="/cakes/:category/:id" element={<CakeDetails />} />

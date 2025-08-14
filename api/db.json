@@ -1,19 +1,4 @@
 {
-  "users": [
-    {
-      "email": "paulo@email.com",
-      "password": "$2a$10$Y9nEeY6FPS3q9i7KLO.D4OTKA4CwTxxSLYQDhlBqXDniiNHJypwm2",
-      "id": 1,
-      "user_img": "32689830.jpeg"
-    },
-    {
-      "email": "admin@teste.com",
-      "password": "$2a$10$a3oICK0qukSEVO/TvgDUkugzCTEXIkuXq76jAl9XWZwxslM837DaO",
-      "user_img": "teste",
-      "arquivo": "1754268320733.jpg",
-      "id": 2
-    }
-  ],
   "cakes": [
     {
       "name": "Bolo de Chocolate",
@@ -336,6 +321,17 @@
       "weight": 1400,
       "images": [
         "https://i.ytimg.com/vi/QycHWAalp5k/maxresdefault.jpg"
+      ]
+    },
+    {
+      "id": "5ed1",
+      "name": "teste",
+      "category": [
+        "recheados"
+      ],
+      "description": "teste",
+      "images": [
+        "1754268320733.jpg"
       ]
     }
   ]

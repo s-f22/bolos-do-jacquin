@@ -1,10 +1,7 @@
 export interface Cake {
-  id: number | undefined;
+  id: string | undefined;
   name: string;
   category: string[];
-  subtitle: string;
   description: string;
-  price: number;
-  weight: number | undefined;
   images: string[];
 }
