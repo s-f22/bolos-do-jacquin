@@ -50,6 +50,11 @@ export const CakeList = () => {
     }
   };
 
+  const capitalizar = (str: string | undefined) => {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -79,7 +84,7 @@ export const CakeList = () => {
       )}
 
       <div className="container mt-4">
-        <h2>Nossos Bolos</h2>
+        <h2>{capitalizar(category)}</h2>
         <div className="row mt-4">
           {cakes.map((cake) => (
             <div
@@ -93,6 +98,7 @@ export const CakeList = () => {
                   src={`http://localhost:3000/static/${cake.images[0]}` || "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"}
                   className="card-img-top"
                   alt={cake.name}
+                  style={{maxHeight: "200px", objectFit: "cover"}}
                 />
                 <div className="card-body align-content-center">
                   <h5 className="card-title">{cake.name}</h5>

@@ -6,46 +6,58 @@ import { FaUpload } from "react-icons/fa";
 import { Header } from "../components/Header";
 
 export const CreateCake = () => {
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const navigate = useNavigate();
 
-  const enviarFoto = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
+  const enviarFoto = async (file: File): Promise<string | null> => {
+    const formData = new FormData();
+    formData.append("file", file);
 
-      await interceptor
-        .post("http://localhost:3000/upload", formData, {
-          headers: { "Content-Type": "multipart/form-data" }
-        })
-        .then(res => {
-          setImage(res.data.filename);
-        })
-        .catch(err => {
-          console.error("Erro no upload da imagem:", err);
-          alert("Erro ao fazer upload da imagem.");
-        });
+    try {
+      const res = await interceptor.post("http://localhost:3000/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+      return res.data.filename;
+    } catch (err) {
+      console.error("Erro no upload da imagem:", err);
+      alert("Erro ao fazer upload da imagem.");
+      return null;
+    }
+  };
+
+
+  const extrairImagem = (img: ChangeEvent<HTMLInputElement>) => {
+    const file = img.target.files?.[0];
+    if (file) {
+      setImageFile(file);
     }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!name || !description || !category || !image) {
+    if (!name || !description || !category || !imageFile) {
       alert("Preencha todos os campos!");
       return;
     }
 
+    const uploadedFileName = await enviarFoto(imageFile);
+
+    if (!uploadedFileName) {
+      alert("Falha ao enviar a imagem.");
+      return;
+    }
+
     const newCake: Cake = {
-      id: crypto.randomUUID().slice(0, 4),
+      id: undefined,
       name,
       category: category.split(",").map(c => c.trim()),
       description,
-      images: [image]
+      images: [uploadedFileName]
     };
 
     try {
@@ -56,8 +68,10 @@ export const CreateCake = () => {
       }
     } catch (error) {
       console.error("Erro ao cadastrar o bolo:", error);
+      alert("Erro ao cadastrar o bolo.");
     }
   };
+
 
   return (
     <>
@@ -109,7 +123,7 @@ export const CreateCake = () => {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={ (e) => enviarFoto(e) }
+                      onChange={(e) => extrairImagem(e)}
                       style={{ flex: 1, padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                     />
 

@@ -6,7 +6,7 @@ export const Header = () => {
 
   return (
     <nav
-      style={{ backgroundColor: "#FFDBBB" }}
+      style={{ backgroundColor: "#ffd088" }}
       className="fixed-top container-fluid navbar"
     >
       <div className="container">

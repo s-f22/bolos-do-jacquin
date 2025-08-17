@@ -2,150 +2,264 @@
   "cakes": [
     {
       "name": "Bolo de Chocolate",
-      "category": ["destaques", "chocolate", "cerimonias"],
+      "category": [
+        "destaques",
+        "chocolate",
+        "cerimonias"
+      ],
       "description": "Um dos preferidos entre os amantes de doces, este bolo de chocolate é feito com uma massa fofa e úmida de cacau puro, recheado com um brigadeiro cremoso e finalizado com uma generosa camada de cobertura de chocolate brilhante. Ideal para aniversários e celebrações especiais.",
-      "images": ["1755437779315.jpg"],
+      "images": [
+        "1755437779315.jpg"
+      ],
       "id": "1edc"
     },
     {
       "name": "Bolo de Morango",
-      "category": ["destaques", "morango", "cerimonias"],
+      "category": [
+        "destaques",
+        "morango",
+        "cerimonias"
+      ],
       "description": "Esse bolo combina uma massa macia de baunilha com camadas generosas de chantilly fresco e morangos naturais cortados. Cada pedaço é refrescante, levemente doce e perfeito para dias mais quentes ou ocasiões que pedem suavidade.",
-      "images": ["1755846779314.webp"],
+      "images": [
+        "1755846779314.webp"
+      ],
       "id": "2jaw"
     },
     {
       "id": "3rgt",
       "name": "Bolo de Cenoura",
-      "category": ["destaques", "chocolate"],
+      "category": [
+        "destaques",
+        "chocolate"
+      ],
       "description": "Uma massa incrivelmente macia e alaranjada feita com cenouras frescas raladas, coberta com uma calda de chocolate meio amargo que forma uma casquinha crocante por cima. Um bolo nostálgico, perfeito para acompanhar um café.",
-      "images": ["1755846779315.jpg"]
+      "images": [
+        "1755846779315.jpg"
+      ]
     },
     {
       "name": "Bolo Red Velvet",
-      "category": ["cerimonias", "destaques"],
+      "category": [
+        "cerimonias",
+        "destaques"
+      ],
       "description": "Elegante e sofisticado, o Bolo Red Velvet traz uma massa úmida com cor intensa de vermelho aveludado, combinada com um recheio e cobertura de cream cheese suave e levemente ácido. Uma experiência visual e sensorial única.",
-      "images": ["1755846779316.jpg"],
+      "images": [
+        "1755846779316.jpg"
+      ],
       "id": "4csd"
     },
     {
       "name": "Bolo de Laranja",
-      "category": ["destaques"],
+      "category": [
+        "destaques"
+      ],
       "description": "Um bolo simples e aromático feito com suco de laranja natural, trazendo um sabor cítrico equilibrado e refrescante. A calda feita com laranja recém-espremida intensifica o aroma e a umidade da massa.",
-      "images": ["1755846779317.webp"],
+      "images": [
+        "1755846779317.webp"
+      ],
       "id": "5lds"
     },
     {
       "name": "Bolo de Coco",
-      "category": ["destaques", "coco"],
+      "category": [
+        "destaques",
+        "coco"
+      ],
       "description": "Delicado e cheio de sabor, esse bolo leva uma massa leve com coco ralado e é coberto por uma generosa camada de leite condensado e mais coco, criando uma textura cremosa e irresistível.",
-      "images": ["1855437779319.jpg"],
+      "images": [
+        "1855437779319.jpg"
+      ],
       "id": "6ret"
     },
     {
       "id": "7grr",
       "name": "Bolo de Limão",
-      "category": ["destaques", "cerimonias"],
+      "category": [
+        "destaques",
+        "cerimonias"
+      ],
       "description": "Combinando uma massa suave com mousse de limão no recheio e cobertura, este bolo é leve, refrescante e levemente ácido, ideal para quem gosta de sobremesas menos doces.",
-      "images": ["1755846779320.webp"]
+      "images": [
+        "1755846779320.webp"
+      ]
     },
     {
       "id": "85uy",
       "name": "Bolo de Maracujá",
-      "category": ["destaques"],
+      "category": [
+        "destaques"
+      ],
       "description": "O sabor tropical do maracujá brilha nesse bolo de massa leve e cobertura feita com a própria fruta e suas sementes, resultando em um contraste perfeito entre o doce e o ácido.",
-      "images": ["1755846779321.png"]
+      "images": [
+        "1755846779321.png"
+      ]
     },
     {
       "id": "9tyu",
       "name": "Bolo Floresta Negra",
-      "category": ["destaques", "chocolate", "cerimonias"],
+      "category": [
+        "destaques",
+        "chocolate",
+        "cerimonias"
+      ],
       "description": "Inspirado na confeitaria alemã, esse bolo traz camadas de pão de ló de chocolate intercaladas com chantilly e cerejas ao licor. Uma combinação rica, doce e levemente alcoólica.",
-      "images": ["1755846779322.jpg"]
+      "images": [
+        "1755846779322.jpg"
+      ]
     },
     {
       "name": "Bolo Nega Maluca",
-      "category": ["destaques", "chocolate"],
+      "category": [
+        "destaques",
+        "chocolate"
+      ],
       "description": "Fofinho e com sabor intenso de cacau, o Bolo Nega Maluca é finalizado com uma calda quente e espessa que penetra na massa, deixando cada fatia ainda mais úmida e saborosa.",
-      "images": ["1755846779323.webp"],
+      "images": [
+        "1755846779323.webp"
+      ],
       "id": "10bk"
     },
     {
       "id": "11fj",
       "name": "Bolo de Leite Ninho",
-      "category": ["destaques", "cerimonias"],
+      "category": [
+        "destaques",
+        "cerimonias"
+      ],
       "description": "Com um recheio aveludado e cobertura branca feita à base de leite Ninho, esse bolo é um sucesso entre os fãs de sabores suaves, porém marcantes.",
-      "images": ["1755846779324.webp"]
+      "images": [
+        "1755846779324.webp"
+      ]
     },
     {
       "id": "12c5",
       "name": "Bolo de Abacaxi",
-      "category": ["destaques"],
+      "category": [
+        "destaques"
+      ],
       "description": "A estrela aqui é o abacaxi caramelizado que cobre uma massa leve e amanteigada. O toque frutado e adocicado traz uma explosão tropical em cada garfada.",
-      "images": ["1755846779325.jpg"]
+      "images": [
+        "1755846779325.jpg"
+      ]
     },
     {
       "id": "13ce",
       "name": "Bolo de Nozes",
-      "category": ["natal"],
+      "category": [
+        "natal"
+      ],
       "description": "Perfeito para paladares refinados, o bolo traz uma massa rica com nozes levemente tostadas, criando um equilíbrio entre textura e sabor que conquista do primeiro ao último pedaço.",
-      "images": ["1755846779326.jpg"]
+      "images": [
+        "1755846779326.jpg"
+      ]
     },
     {
       "name": "Bolo de Paçoca",
-      "category": ["natal", "destaques"],
+      "category": [
+        "natal",
+        "destaques"
+      ],
       "description": "Para os apaixonados por amendoim, este bolo une uma massa amanteigada com recheio de creme de paçoca e cobertura com pedaços crocantes, trazendo sabor e textura incomparáveis.",
-      "images": ["1755846779327.jpg"],
+      "images": [
+        "1755846779327.jpg"
+      ],
       "id": "14vx"
     },
     {
       "id": "vn15",
       "name": "Bolo de Café",
-      "category": ["destaques", "cerimonias", "chocolate"],
+      "category": [
+        "destaques",
+        "cerimonias",
+        "chocolate"
+      ],
       "description": "Com massa rica em cacau e aroma marcante de café, esse bolo agrada tanto chocólatras quanto amantes de café. A união dos dois ingredientes cria uma sobremesa sofisticada e estimulante.",
-      "images": ["1755846779328.jpg"]
+      "images": [
+        "1755846779328.jpg"
+      ]
     },
     {
       "id": "1fx6",
       "name": "Bolo de Banana",
-      "category": ["destaques"],
+      "category": [
+        "destaques"
+      ],
       "description": "Com pedaços de banana caramelizada sobre uma massa densa e perfumada com canela, este bolo é reconfortante, ideal para o café da tarde.",
-      "images": ["1755846779320.jpg"]
+      "images": [
+        "1755846779329.jpg"
+      ]
     },
     {
       "id": "rf17",
       "name": "Bolo de Amendoim",
-      "category": ["natal"],
+      "category": [
+        "natal"
+      ],
       "description": "Massa amanteigada combinada com uma cobertura de creme de amendoim caseiro, que traz um sabor encorpado, levemente salgado e extremamente viciante.",
-      "images": ["1755846779330.jpg"]
+      "images": [
+        "1755846779330.jpg"
+      ]
     },
     {
       "name": "Bolo de Baunilha",
-      "category": ["natal"],
+      "category": [
+        "natal"
+      ],
       "description": "Macio e delicado, o bolo de baunilha é feito com ingredientes simples e de qualidade. Seu sabor suave combina bem com qualquer ocasião, podendo ser servido puro ou com acompanhamentos.",
-      "images": ["1755846779331.jpg"],
+      "images": [
+        "1755846779331.jpg"
+      ],
       "id": "1tg8"
     },
     {
       "name": "Bolo de Oreo",
-      "category": ["destaques", "chocolate", "cerimonias"],
+      "category": [
+        "destaques",
+        "chocolate",
+        "cerimonias"
+      ],
       "description": "A massa fofa de chocolate é intercalada com creme branco e pedaços crocantes de biscoito Oreo. A combinação perfeita entre cremosidade e crocância para os fãs do famoso biscoito.",
-      "images": ["1755846779332.jpg"],
+      "images": [
+        "1755846779332.jpg"
+      ],
       "id": "1et9"
     },
     {
       "id": "20re",
       "name": "Bolo de Pistache",
-      "category": ["natal", "cerimonias", "destaques"],
+      "category": [
+        "natal",
+        "cerimonias",
+        "destaques"
+      ],
       "description": "Com uma massa macia de baunilha e recheio de creme de pistache artesanal, este bolo oferece um sabor sutil e sofisticado. Finalizado com pistaches triturados na cobertura para dar crocância.",
-      "images": ["1755846779333.jpg"]
+      "images": [
+        "1755846779333.jpg"
+      ]
     },
     {
       "id": "21fe",
       "name": "Bolo Salgado",
-      "category": ["destaques"],
+      "category": [
+        "destaques"
+      ],
       "description": "Esse bolo salgado é preparado com uma massa leve e recheado com presunto, queijo, legumes variados e temperos selecionados. Perfeito para festas, piqueniques e lanches, pode ser servido quente ou frio, sempre delicioso.",
-      "images": ["1755846779330.jpg"]
+      "images": [
+        "1755846779330.jpg"
+      ]
+    },
+    {
+      "name": "Bolo de Natal",
+      "category": [
+        "natal"
+      ],
+      "description": "Bolo de natal especial",
+      "images": [
+        "1755473068903.jpeg"
+      ],
+      "id": "PW_g6yq"
     }
   ]
 }
