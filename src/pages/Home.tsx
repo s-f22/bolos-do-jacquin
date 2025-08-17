@@ -30,18 +30,13 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      {/* <div className="container mt-4">
-        <h1 className="display-4">Bem-vindo à Loja de Bolos!</h1>
-        <p className="lead">Delícias que derretem na boca 🍰</p>
-      </div> */}
-      <div className="mainContainer">
-        <div style={{ alignSelf: "center" }}>
-          <h1 style={{marginBottom: "1.5rem"}}>Bolos do Jacquin</h1>
-          <img className="jacquinImg" src="https://images.tcdn.com.br/img/img_prod/687586/dolma_i_erick_jacquin_229_1_577f0f49e946535fe962dbc071445cf2.jpg" alt="" />
-        </div>
-        <CakeCategories />
+
+    <div className="container mainContainer">
+      <div style={{ alignSelf: "center", width: "100%" }}>
+        <h1 style={{ marginBottom: "1.5rem" }}>Bolos do Jacquin</h1>
+        <img className="jacquinImg" src="https://images.tcdn.com.br/img/img_prod/687586/dolma_i_erick_jacquin_229_1_577f0f49e946535fe962dbc071445cf2.jpg" alt="" />
       </div>
-    </>
+      <CakeCategories />
+    </div>
   );
 };

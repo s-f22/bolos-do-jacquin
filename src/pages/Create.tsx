@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Cake } from "../types/Cake";
 import interceptor from "../services/interceptor";
@@ -11,6 +11,26 @@ export const CreateCake = () => {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
   const navigate = useNavigate();
+
+  const enviarFoto = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      await interceptor
+        .post("http://localhost:3000/upload", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        })
+        .then(res => {
+          setImage(res.data.filename);
+        })
+        .catch(err => {
+          console.error("Erro no upload da imagem:", err);
+          alert("Erro ao fazer upload da imagem.");
+        });
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +52,7 @@ export const CreateCake = () => {
       const postResponse = await interceptor.post("http://localhost:3000/cakes", newCake);
       if (postResponse.status === 201) {
         alert("Bolo cadastrado com sucesso!");
-        navigate("/cakes");
+        navigate("/");
       }
     } catch (error) {
       console.error("Erro ao cadastrar o bolo:", error);
@@ -89,25 +109,7 @@ export const CreateCake = () => {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          const formData = new FormData();
-                          formData.append("file", file);
-
-                          interceptor
-                            .post("http://localhost:3000/upload", formData, {
-                              headers: { "Content-Type": "multipart/form-data" }
-                            })
-                            .then(res => {
-                              setImage(res.data.filename);
-                            })
-                            .catch(err => {
-                              console.error("Erro no upload da imagem:", err);
-                              alert("Erro ao fazer upload da imagem.");
-                            });
-                        }
-                      }}
+                      onChange={ (e) => enviarFoto(e) }
                       style={{ flex: 1, padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                     />
 

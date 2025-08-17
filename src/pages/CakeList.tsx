@@ -28,6 +28,7 @@ export const CakeList = () => {
         : response.data;
 
       setCakes(filtrados);
+      console.log(filtrados);
 
       const allImagesWithInfo: CarouselItem[] = filtrados.flatMap((cake: Cake) =>
         cake.images.map((img) => ({
@@ -36,16 +37,18 @@ export const CakeList = () => {
           images: img,
         }))
       );
+      console.log("All images: ", allImagesWithInfo);
 
       // Aleatoriza e seleciona os primeiros 5
       const shuffled = allImagesWithInfo.sort(() => 0.5 - Math.random());
       const selected = shuffled.slice(0, 5);
+      console.log("Selected: ", selected);
       setCarouselItems(selected);
+      console.log("Carrossel itens: ",carouselItems);
     } catch (error) {
       console.error("Erro ao buscar os dados: ", error);
     }
   };
-
 
   useEffect(() => {
     getData();
@@ -62,7 +65,7 @@ export const CakeList = () => {
               <Link to={`/cakes/${category}/${item.id}`}>
                 <img
                   className="d-block w-100 rounded"
-                  src={item.images}
+                  src={`http://localhost:3000/static/${item.images}`}
                   alt={item.name}
                   style={{ maxHeight: "400px", objectFit: "cover" }}
                 />
@@ -93,7 +96,7 @@ export const CakeList = () => {
                 />
                 <div className="card-body align-content-center">
                   <h5 className="card-title">{cake.name}</h5>
-                  
+                  <p>{cake.description}</p>
                 </div>
               </div>
             </div>
