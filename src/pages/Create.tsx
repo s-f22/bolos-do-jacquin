@@ -108,37 +108,43 @@ export const CreateCake = () => {
                   style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                 />
               </div>
-              <div>
-                <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Categoria</label>
-                <input
-                  type="text"
-                  placeholder="Chocolate, Morango, Coco"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
-                />
-                <div >
+              <div style={{display: "grid", gridTemplateColumns: "5fr 1fr", gap: "1rem"}}>
+                <div>
+                  <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Categoria</label>
+                  <input
+                    type="text"
+                    placeholder="Chocolate, Morango, Coco"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
+                  />
+                </div>
+
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start"}}>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Imagem</label>
-                  <div style={{ display: "flex", gap: "0.5rem" }}>
+                  <div>
                     <input
                       type="file"
+                      id="imageUpload"
                       accept="image/*"
-                      onChange={(e) => extrairImagem(e)}
-                      style={{ flex: 1, padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
+                      onChange={extrairImagem}
+                      style={{ display: "none" }}
                     />
 
-                    <button
-                      type="button"
-                      style={{
-                        backgroundColor: "#f4d1a1",
-                        border: "none",
-                        padding: "0 1rem",
-                        borderRadius: "5px",
-                        cursor: "pointer"
-                      }}
-                    >
+                    <label htmlFor="imageUpload" style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      backgroundColor: "#f4d1a1",
+                      border: "none",
+                      padding: "0.5rem 1rem",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                      height: "2.5rem"
+                    }}>
                       <FaUpload />
-                    </button>
+                    </label>
+
                   </div>
                 </div>
               </div>
