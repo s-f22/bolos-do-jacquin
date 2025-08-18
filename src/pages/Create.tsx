@@ -1,9 +1,14 @@
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Cake } from "../types/Cake";
 import interceptor from "../services/interceptor";
 import { FaUpload } from "react-icons/fa";
 import { Header } from "../components/Header";
+import axios from "axios";
+import { PiTrashThin } from "react-icons/pi";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 export const CreateCake = () => {
 
@@ -11,7 +16,34 @@ export const CreateCake = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [cakes, setCakes] = useState([])
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [deletar, setDeletar] = useState(false)
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const confirmarDelete = () => {
+    setDeletar(true);
+  }
+
+  const deletarBolo = async (id: string) => {
+    handleShow();
+    if (deletar) {
+      try {
+      const res = await axios.delete("http://localhost:3000/cakes")
+      if (res.status == 200 || res.status == 204) {
+        handleClose();
+        alert("item excluido com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao deletar o item: ", error)
+    }
+      
+    }
+  }
+
 
   const enviarFoto = async (file: File): Promise<string | null> => {
     const formData = new FormData();
@@ -72,6 +104,26 @@ export const CreateCake = () => {
     }
   };
 
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/cakes")
+      const dados = res.data;
+      if (dados) {
+        setCakes(dados)
+      }
+
+    } catch (error) {
+      console.error("Erro ao buscar os dados: ", error)
+    }
+
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+
+
 
   return (
     <>
@@ -102,25 +154,25 @@ export const CreateCake = () => {
                 <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Bolo</label>
                 <input
                   type="text"
-                  placeholder="Bolo de cenoura"
+                  placeholder="Insira o nome do bolo"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                 />
               </div>
-              <div style={{display: "grid", gridTemplateColumns: "5fr 1fr", gap: "1rem"}}>
+              <div style={{ display: "grid", gridTemplateColumns: "5fr 1fr", gap: "1rem" }}>
                 <div>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Categoria</label>
                   <input
                     type="text"
-                    placeholder="Chocolate, Morango, Coco"
+                    placeholder="Chocolate, Cerimonias, Morango, Morango, Coco, Destaques"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                   />
                 </div>
 
-                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start"}}>
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Imagem</label>
                   <div>
                     <input
@@ -155,7 +207,7 @@ export const CreateCake = () => {
               <div>
                 <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem" }}>Descrição</label>
                 <textarea
-                  placeholder="Bolo de cenoura com cobertura de chocolate, saboroso..."
+                  placeholder="Insira uma descrição em detalhes sobre o bolo"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={4}
@@ -181,6 +233,49 @@ export const CreateCake = () => {
           </div>
         </form>
       </div>
+      <h2 className="mb-4">Lista</h2>
+      <table className="container table table-hover">
+        <thead>
+          <tr color="#fff6e7" style={{ verticalAlign: "middle" }}>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descrição</th>
+            <th scope="col" style={{ padding: "1rem" }}>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            cakes.map((bolo: Cake) => (
+              <tr style={{ verticalAlign: "middle" }}>
+                <td>{bolo.name}</td>
+                <td>{bolo.category.join(", ")}</td>
+                <td>{bolo.description}</td>
+                <td>
+                  <PiTrashThin
+                    size={35}
+                    style={{ cursor: "pointer", padding: "5px" }}
+                    onClick={deletarBolo(bolo.id)} />
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header >
+          <Modal.Title>Excluir item</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja deletar este bolo? Ele será removido da lista.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={confirmarDelete}>
+            Excluir
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
