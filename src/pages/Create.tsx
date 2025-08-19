@@ -19,29 +19,27 @@ export const CreateCake = () => {
   const [cakes, setCakes] = useState([])
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [deletar, setDeletar] = useState(false)
+  const [deletarId, setDeletarId] = useState("")
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const confirmarDelete = () => {
-    setDeletar(true);
+  const handleShow = (id: string) => {
+    setShow(true);
+    setDeletarId(id);
   }
 
-  const deletarBolo = async (id: string) => {
-    handleShow();
-    if (deletar) {
-      try {
-      const res = await axios.delete("http://localhost:3000/cakes")
+
+  const deletarBolo = async () => {
+    try {
+      const res = await axios.delete(`http://localhost:3000/cakes/${deletarId}`)
       if (res.status == 200 || res.status == 204) {
         handleClose();
-        alert("item excluido com sucesso!");
+        getData();
+        setDeletarId("");
       }
     } catch (error) {
       console.error("Erro ao deletar o item: ", error)
     }
-      
-    }
+
   }
 
 
@@ -96,7 +94,8 @@ export const CreateCake = () => {
       const postResponse = await interceptor.post("http://localhost:3000/cakes", newCake);
       if (postResponse.status === 201) {
         alert("Bolo cadastrado com sucesso!");
-        navigate("/");
+        getData();
+        // navigate("/");
       }
     } catch (error) {
       console.error("Erro ao cadastrar o bolo:", error);
@@ -254,7 +253,13 @@ export const CreateCake = () => {
                   <PiTrashThin
                     size={35}
                     style={{ cursor: "pointer", padding: "5px" }}
-                    onClick={deletarBolo(bolo.id)} />
+                    onClick={() => {
+                      if (bolo.id) {
+                        handleShow(bolo.id);
+                      } else {
+                        console.warn("ID do bolo está indefinido.");
+                      }
+                    }} />
                 </td>
               </tr>
             ))
@@ -271,7 +276,7 @@ export const CreateCake = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="danger" onClick={confirmarDelete}>
+          <Button variant="danger" onClick={() => deletarBolo()}>
             Excluir
           </Button>
         </Modal.Footer>

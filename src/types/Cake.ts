@@ -1,5 +1,5 @@
 export interface Cake {
-  id: string | undefined;
+  id?: string;
   name: string;
   category: string[];
   description: string;

@@ -251,15 +251,15 @@
       ]
     },
     {
-      "name": "Bolo de Natal",
+      "name": "Bolo de Casamento",
       "category": [
-        "natal"
+        "cerimonias"
       ],
-      "description": "Bolo de natal especial",
+      "description": "Bolo de casamento, recheado",
       "images": [
-        "1755473068903.jpeg"
+        "1755567380464.jpg"
       ],
-      "id": "PW_g6yq"
+      "id": "CkotkD2"
     }
   ]
 }
