@@ -153,7 +153,7 @@ export const CreateCake = () => {
                   style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                 />
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "6fr 1fr", gap: "2rem" }}>
+              <div className="container-categ-img">
                 <div>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Categoria</label>
                   <input

@@ -20,6 +20,20 @@
     }
 }
 
+.container-categ-img {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    gap: 2rem
+}
+
+@media (max-width: 992px) {
+    .container-categ-img {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem
+}
+}
+
 .bg-custom {
     background-color: #fff6e7 !important;
 }
