@@ -251,15 +251,16 @@
       ]
     },
     {
-      "name": "Bolo de Casamento",
+      "name": "teste categorias",
       "category": [
-        "cerimonias"
+        "chocolate",
+        "natal"
       ],
-      "description": "Bolo de casamento, recheado",
+      "description": "teste",
       "images": [
-        "1755567380464.jpg"
+        "1755614565740.jpg"
       ],
-      "id": "CkotkD2"
+      "id": "aOqtzSx"
     }
   ]
 }

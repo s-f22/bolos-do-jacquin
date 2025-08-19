@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import interceptor from "../services/interceptor";
 import { Carousel } from "react-bootstrap";
 import { Header } from "../components/Header";
+import "./CakeList.css"
 
 interface CarouselItem {
   id: string;
@@ -93,7 +94,7 @@ export const CakeList = () => {
               onClick={() => navigate(`/cakes/${category}/${cake.id}`)}
               style={{ cursor: "pointer" }}
             >
-              <div className="card h-100">
+              <div className="texto-cards card h-100">
                 <img
                   src={`http://localhost:3000/static/${cake.images[0]}` || "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"}
                   className="card-img-top"
@@ -101,7 +102,7 @@ export const CakeList = () => {
                   style={{maxHeight: "200px", objectFit: "cover"}}
                 />
                 <div className="card-body align-content-center">
-                  <h5 className="card-title">{cake.name}</h5>
+                  <h5 className="card-title mb-3"><b>{cake.name}</b></h5>
                   <p>{cake.description}</p>
                 </div>
               </div>

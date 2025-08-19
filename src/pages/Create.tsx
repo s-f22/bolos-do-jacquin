@@ -2,12 +2,13 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Cake } from "../types/Cake";
 import interceptor from "../services/interceptor";
-import { FaUpload } from "react-icons/fa";
+import { PiUploadLight } from "react-icons/pi";
 import { Header } from "../components/Header";
 import axios from "axios";
 import { PiTrashThin } from "react-icons/pi";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import "./Create.css"
 
 
 export const CreateCake = () => {
@@ -21,7 +22,9 @@ export const CreateCake = () => {
   const [show, setShow] = useState(false);
   const [deletarId, setDeletarId] = useState("")
 
+
   const handleClose = () => setShow(false);
+
   const handleShow = (id: string) => {
     setShow(true);
     setDeletarId(id);
@@ -39,7 +42,6 @@ export const CreateCake = () => {
     } catch (error) {
       console.error("Erro ao deletar o item: ", error)
     }
-
   }
 
 
@@ -110,11 +112,9 @@ export const CreateCake = () => {
       if (dados) {
         setCakes(dados)
       }
-
     } catch (error) {
       console.error("Erro ao buscar os dados: ", error)
     }
-
   }
 
   useEffect(() => {
@@ -122,31 +122,25 @@ export const CreateCake = () => {
   }, [])
 
 
-
-
   return (
     <>
       <Header />
-      <div style={{
-        maxWidth: "900px",
-        margin: "56px auto",
-        padding: "2rem",
-        backgroundColor: "#fff8f0",
-        borderRadius: "10px"
-      }}>
+      <div
+        className="container bg-custom"
+        style={{
+          marginTop: "56px",
+          padding: "2rem",
+          backgroundColor: "#fff8f0",
+          borderRadius: "10px"
+        }}>
         <h2 style={{
           textAlign: "center",
           marginBottom: "2rem",
-          fontFamily: "'Quicksand', sans-serif"
+          marginTop: "1rem"
         }}>Cadastro</h2>
 
         <form onSubmit={handleSubmit}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "2rem",
-            marginBottom: "1.5rem"
-          }}>
+          <div className="itens-cadastro-container"          >
             {/* Coluna esquerda */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div>
@@ -159,12 +153,12 @@ export const CreateCake = () => {
                   style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
                 />
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "5fr 1fr", gap: "1rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "6fr 1fr", gap: "2rem" }}>
                 <div>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Categoria</label>
                   <input
                     type="text"
-                    placeholder="Chocolate, Cerimonias, Morango, Morango, Coco, Destaques"
+                    placeholder="Chocolate, Cerimonias, Morango, Natal, Coco, Destaques"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     style={{ width: "100%", padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
@@ -173,7 +167,7 @@ export const CreateCake = () => {
 
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem", textAlign: "left" }}>Imagem</label>
-                  <div>
+                  <div className="w-100 h-100">
                     <input
                       type="file"
                       id="imageUpload"
@@ -185,15 +179,18 @@ export const CreateCake = () => {
                     <label htmlFor="imageUpload" style={{
                       display: "inline-flex",
                       alignItems: "center",
-                      backgroundColor: "#f4d1a1",
+                      backgroundColor: "#ffd088",
                       border: "none",
                       padding: "0.5rem 1rem",
                       borderRadius: "5px",
                       cursor: "pointer",
                       fontWeight: "bold",
-                      height: "2.5rem"
+                      width: "100%",
+                      height: "100%",
+                      justifyContent: "center",
+                      boxShadow: "2px 2px 0px #cfa56f"
                     }}>
-                      <FaUpload />
+                      <PiUploadLight size={25} />
                     </label>
 
                   </div>
@@ -203,9 +200,10 @@ export const CreateCake = () => {
 
             {/* Coluna direita */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <div>
-                <label style={{ fontWeight: "bold", display: "block", marginBottom: "0.25rem" }}>Descrição</label>
+              <div className="text-area-container">
+                <label style={{ fontWeight: "bold", marginBottom: "0.25rem", textAlign: "left" }}>Descrição</label>
                 <textarea
+                  className="h-100"
                   placeholder="Insira uma descrição em detalhes sobre o bolo"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -217,11 +215,11 @@ export const CreateCake = () => {
             </div>
           </div>
 
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <button type="submit" style={{
-              backgroundColor: "#f4d1a1",
+              backgroundColor: "#ffd088",
               border: "none",
-              padding: "0.75rem 2rem",
+              padding: "0.75rem 7rem",
               borderRadius: "10px",
               cursor: "pointer",
               fontWeight: "bold",
@@ -232,40 +230,43 @@ export const CreateCake = () => {
           </div>
         </form>
       </div>
-      <h2 className="mb-4">Lista</h2>
-      <table className="container table table-hover">
-        <thead>
-          <tr color="#fff6e7" style={{ verticalAlign: "middle" }}>
-            <th scope="col">Nome</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Descrição</th>
-            <th scope="col" style={{ padding: "1rem" }}>Excluir</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            cakes.map((bolo: Cake) => (
-              <tr style={{ verticalAlign: "middle" }}>
-                <td>{bolo.name}</td>
-                <td>{bolo.category.join(", ")}</td>
-                <td>{bolo.description}</td>
-                <td>
-                  <PiTrashThin
-                    size={35}
-                    style={{ cursor: "pointer", padding: "5px" }}
-                    onClick={() => {
-                      if (bolo.id) {
-                        handleShow(bolo.id);
-                      } else {
-                        console.warn("ID do bolo está indefinido.");
-                      }
-                    }} />
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+
+      <h2 className="mt-3 mb-4">Lista</h2>
+      <div className="table-responsive">
+        <table className="container table table-hover mb-5 custom-table ">
+          <thead style={{ backgroundColor: "#fff6e7" }}>
+            <tr style={{ verticalAlign: "middle" }}>
+              <th className="bg-custom"><b>Nome</b></th>
+              <th className="bg-custom">Categoria</th>
+              <th className="bg-custom">Descrição</th>
+              <th className="bg-custom" style={{ padding: "1rem" }}>Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              cakes.map((bolo: Cake) => (
+                <tr className="table-row-bg" style={{ verticalAlign: "middle" }}>
+                  <td className="bg-custom">{bolo.name}</td>
+                  <td className="bg-custom">{bolo.category.join(", ")}</td>
+                  <td className="bg-custom">{bolo.description}</td>
+                  <td className="bg-custom">
+                    <PiTrashThin
+                      size={35}
+                      style={{ cursor: "pointer", padding: "5px" }}
+                      onClick={() => {
+                        if (bolo.id) {
+                          handleShow(bolo.id);
+                        } else {
+                          console.warn("ID do bolo está indefinido.");
+                        }
+                      }} />
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header >

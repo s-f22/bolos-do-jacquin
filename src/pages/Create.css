@@ -1,0 +1,42 @@
+.text-area-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.itens-cadastro-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 992px) {
+    .itens-cadastro-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.bg-custom {
+    background-color: #fff6e7 !important;
+}
+
+table {
+    font-family: 'Bellota', cursive;
+}
+
+table td {
+    padding: 2rem !important;
+}
+
+h1,
+h2 {
+    font-family: 'Bellota', cursive;
+}
+
+form {
+    font-family: 'Bellota', cursive;
+}
