@@ -9,6 +9,7 @@ import { PiTrashThin } from "react-icons/pi";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./Create.css"
+import { Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from "react-bootstrap";
 
 
 export const CreateCake = () => {
@@ -232,7 +233,7 @@ export const CreateCake = () => {
       </div>
 
       <h2 className="mt-3 mb-4">Lista</h2>
-      <div className="table-responsive">
+      <div className="table-responsive tabela-responsiva">
         <table className="container table table-hover mb-5 custom-table ">
           <thead style={{ backgroundColor: "#fff6e7" }}>
             <tr style={{ verticalAlign: "middle" }}>
@@ -266,6 +267,28 @@ export const CreateCake = () => {
             }
           </tbody>
         </table>
+      </div>
+      {/* Cards para exibição somente em telas menores */}
+      <div className="container container-cards-mobile">
+        {
+          cakes.map((c: Cake) => (
+            <Card className="card-container">
+              {/* <CardImg className="cardImg" variant="" src={`http://localhost:3000/static/${c.images}`} /> */}
+              <CardBody>
+                <CardTitle><b>{c.name}</b></CardTitle>
+                <CardSubtitle className="mb-2"> <b>Categorias:</b> {c.category.join(", ")} </CardSubtitle>
+                <CardText> {c.description} </CardText>
+                <Button onClick={() => {
+                  if (c.id) {
+                    handleShow(c.id);
+                  } else {
+                    console.warn("ID do bolo está indefinido.");
+                  }
+                }} > <PiTrashThin /> </Button>
+              </CardBody>
+            </Card>
+          ))
+        }
       </div>
 
       <Modal show={show} onHide={handleClose}>

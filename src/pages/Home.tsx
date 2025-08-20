@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import type { Cake } from "../types/Cake";
 import interceptor from "../services/interceptor";
 import { CakeCategories } from "../components/CakeCategories";
+import  jacquin  from "../assets/jacquin.png";
 
 
 export const Home = () => {
@@ -14,7 +15,6 @@ export const Home = () => {
     const fetchCakes = async () => {
       try {
         const response = await interceptor.get<Cake[]>("http://localhost:3000/cakes");
-
 
 
         // Simula os mais populares pegando os 3 primeiros
@@ -33,8 +33,8 @@ export const Home = () => {
 
     <div className="container mainContainer">
       <div style={{ alignSelf: "center", width: "100%" }}>
-        <h1 style={{ marginBottom: "1.5rem" }}>Bolos do Jacquin</h1>
-        <img className="jacquinImg" src="https://images.tcdn.com.br/img/img_prod/687586/dolma_i_erick_jacquin_229_1_577f0f49e946535fe962dbc071445cf2.jpg" alt="" />
+        <h1 className="titulo">Bolos do Jacquin</h1>
+        <img className="jacquinImg" src={jacquin} alt="" />
       </div>
       <CakeCategories />
     </div>

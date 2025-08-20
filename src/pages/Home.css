@@ -1,21 +1,30 @@
 .mainContainer {
   display: grid;
-  grid-template-columns: 1fr 3fr; /* 1/4 e 3/4 */
+  grid-template-columns: 1fr 3fr;
   min-height: calc(100vh - 70px);
   padding: 0;
-  /* background-color: #fff6e7; */
+  gap: 2rem;;
 }
 
-.jacquinImg{
-width: 100%;
+.titulo {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-family: "Julius Sans One", sans-serif;
+}
+
+.jacquinImg {
+  width: 100%;
   object-fit: contain;
-  border-radius: 10px;
   display: block;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 950px) {
   .mainContainer {
     grid-template-columns: 1fr;
-    /* Uma coluna apenas */
+  }
+  .jacquinImg{
+    max-height: 20rem;
+    margin: 0;
   }
 }

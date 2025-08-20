@@ -31,7 +31,7 @@ export const CakeCategories: React.FC = () => {
         <Link to={`/cakes/${category.id}`}>
           <div key={category.id} className="cake-card">
             <div className="cake-image-container">
-              <div style={{background: `linear-gradient(to bottom, ${category.cor_1}, ${category.cor_2})`}} className=" d-flex justify-content-center align-items-center w-100 h-100 coresBackground">
+              <div style={{ background: `linear-gradient(to bottom, ${category.cor_1}, ${category.cor_2})` }} className=" d-flex justify-content-center align-items-center w-100 h-100 coresBackground">
                 <div className={category.nomeClasse}></div>
               </div>
               <h3>{category.title}</h3>

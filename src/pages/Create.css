@@ -28,11 +28,37 @@
 
 @media (max-width: 992px) {
     .container-categ-img {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem
+    }
 }
+
+.card-container {
+    max-width: 20rem;
 }
+
+.cardImg {
+    object-fit: cover;
+    max-height: 10rem;
+}
+
+.container-cards-mobile {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .container-cards-mobile {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+    .tabela-responsiva{
+        display: none;
+    }
+}
+
 
 .bg-custom {
     background-color: #fff6e7 !important;

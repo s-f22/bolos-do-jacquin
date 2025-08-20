@@ -251,16 +251,16 @@
       ]
     },
     {
-      "name": "teste categorias",
+      "name": "Bolo Prestígio",
       "category": [
         "chocolate",
-        "natal"
+        "destaques"
       ],
-      "description": "teste",
+      "description": "Um clássico irresistível! Nosso Bolo Prestígio é feito com camadas fofinhas de massa de chocolate intensamente saborosa, recheado com um creme de coco cremoso e delicado, que derrete na boca. A cobertura é um generoso ganache de chocolate meio amargo, finalizado com lascas de coco fresco para um toque especial. A combinação perfeita entre o doce do coco e a intensidade do chocolate — uma verdadeira tentação para os amantes dessa dupla!",
       "images": [
-        "1755614565740.jpg"
+        "1755711504418.jpg"
       ],
-      "id": "aOqtzSx"
+      "id": "omJJRii"
     }
   ]
 }
