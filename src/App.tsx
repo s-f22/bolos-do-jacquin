@@ -2,13 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { CakeList } from "./pages/CakeList.tsx";
 import { CreateCake } from "./pages/Create.tsx";
-import { EditCake } from "./pages/EditCake.tsx";
-import { CakeDetails } from "./pages/CakeDetails.tsx";
 import './App.css'
 import { Footer } from "./components/Footer.tsx";
 import { Login } from "./pages/Login.tsx";
-import { PrivateRoute } from "./components/PrivateRoute.tsx";
-import { CakeCategories } from "./components/CakeCategories.tsx";
 
 function App() {
 

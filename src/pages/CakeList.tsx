@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import type { Cake } from "../types/Cake";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import interceptor from "../services/interceptor";
 import { Carousel } from "react-bootstrap";
 import { Header } from "../components/Header";
 import { useLocation } from "react-router-dom";
 import "./CakeList.css"
+import axios from "axios";
 
 interface CarouselItem {
   id: string;
@@ -23,7 +23,7 @@ export const CakeList = () => {
 
   const getData = async () => {
     try {
-      const response = await interceptor.get("http://localhost:3000/cakes");
+      const response = await axios.get("http://localhost:3000/cakes");
       const allCakes: Cake[] = response.data;
 
       let filtered: Cake[] = [];

@@ -1,7 +1,5 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import type { Cake } from "../types/Cake";
-import interceptor from "../services/interceptor";
 import { PiUploadLight } from "react-icons/pi";
 import { Header } from "../components/Header";
 import axios from "axios";
@@ -9,7 +7,7 @@ import { PiTrashThin } from "react-icons/pi";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./Create.css"
-import { Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from "react-bootstrap";
+import { Card, CardBody, CardSubtitle, CardText, CardTitle } from "react-bootstrap";
 
 
 export const CreateCake = () => {
@@ -19,7 +17,6 @@ export const CreateCake = () => {
   const [category, setCategory] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [cakes, setCakes] = useState([])
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [deletarId, setDeletarId] = useState("")
 
@@ -51,7 +48,7 @@ export const CreateCake = () => {
     formData.append("file", file);
 
     try {
-      const res = await interceptor.post("http://localhost:3000/upload", formData, {
+      const res = await axios.post("http://localhost:3000/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       return res.data.filename;
@@ -94,7 +91,7 @@ export const CreateCake = () => {
     };
 
     try {
-      const postResponse = await interceptor.post("http://localhost:3000/cakes", newCake);
+      const postResponse = await axios.post("http://localhost:3000/cakes", newCake);
       if (postResponse.status === 201) {
         alert("Bolo cadastrado com sucesso!");
         getData();

@@ -8,13 +8,10 @@ import 'primeicons/primeicons.css';
 
 
 import App from './App.tsx'
-import { AuthProvider } from './contexts/AuthContext.tsx';
 import React from 'react';
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <App />
   </React.StrictMode>
 )
