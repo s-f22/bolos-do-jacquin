@@ -13,8 +13,9 @@ export const Header = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const irPara = (categoria: string) => {
-    navigate(`/cakes/${categoria}`);
+  const irPara = (categoria: string, id: string) => {
+    navigate(`/cakes/${categoria}/${id}`)
+    // navigate(`/cakes/${categoria}`);
     setSearch("");
   }
 
@@ -48,7 +49,7 @@ export const Header = () => {
     setSuggestions(filtered);
   }, [search])
 
-  
+
 
   return (
     <nav
@@ -69,13 +70,24 @@ export const Header = () => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar bolos..."
           />
-          <Button variant="light"><IoIosSearch /></Button>
+          <Button
+            variant="light"
+            onClick={() => {
+              navigate("/cakes/search", {
+                state: { results: suggestions },
+              });
+              setSearch("");
+            }}
+          >
+            <IoIosSearch />
+          </Button>
+
 
           {suggestions.length > 0 && (
             <ul className="suggestions-list">
               {suggestions.map((cake: Cake) => (
                 <li key={cake.id}>
-                  <p onClick={() => irPara(cake.category[0])}>{cake.name}</p>
+                  <p onClick={() => irPara(cake.category[0], cake.id!)}>{cake.name}</p>
                 </li>
               ))}
             </ul>

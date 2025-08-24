@@ -19,21 +19,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/cakes/:category" element={<CakeList />} />
-          <Route
-            path="/cakes/create"
-            element={
-                <CreateCake />
-            }
-          />
-          <Route path="/cakes/:category/:id" element={<CakeDetails />} />
-          <Route
-            path="/cakes/:id/edit"
-            element={
-              <PrivateRoute>
-                <EditCake />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/cakes/:category/:cakeId" element={<CakeList />} />
+          <Route path="/cakes/search" element={<CakeList />} />
+          <Route path="/cakes/search/:cakeId" element={<CakeList />} />
+          <Route path="/cakes/create" element={<CreateCake />} />
         </Routes>
         <Footer />
       </BrowserRouter>
