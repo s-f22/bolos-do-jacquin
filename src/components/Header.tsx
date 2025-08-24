@@ -56,13 +56,13 @@ export const Header = () => {
       style={{ backgroundColor: "#ffd088" }}
       className="fixed-top container-fluid navbar"
     >
-      <div className="container">
+      <div className="container containerHeader">
 
-        <Link className="" to="/">
+        <Link className="goBack" to="/">
           <IoIosReturnLeft size={25} color="black" onClick={() => navigate(-1)} />
         </Link>
 
-        <div className="container-pesquisar position-relative">
+        <div className="grupoPesquisar position-relative">
           <input
             className="inputStyle"
             type="text"
@@ -81,7 +81,6 @@ export const Header = () => {
           >
             <IoIosSearch />
           </Button>
-
 
           {suggestions.length > 0 && (
             <ul className="suggestions-list">

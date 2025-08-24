@@ -72,7 +72,7 @@ export const CakeList = () => {
       <Header />
 
       {carouselItems.length > 0 && (
-        <Carousel style={{ marginTop: "56px" }}>
+        <Carousel style={{ marginTop: "54px" }}>
           {carouselItems.map((item, idx) => (
             <Carousel.Item key={idx}>
               <Link to={`/cakes/${category || "search"}/${item.id}`}>
@@ -91,9 +91,13 @@ export const CakeList = () => {
         </Carousel>
       )}
 
+
       <div className="container mt-4">
         <h2>{cakeId ? "Resultado específico" : capitalizar(category || "Resultados da busca")}</h2>
         <div className="row mt-4">
+          {
+            (cakes.length == 0 && location.pathname.includes("search")) && <p style={{height: "100vh"}}>Nenhum resultado encontrado</p>
+          }
           {cakes.map((cake) => (
             <div
               className="col-md-4 mb-4"
