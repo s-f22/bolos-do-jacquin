@@ -123,19 +123,8 @@ export const CreateCake = () => {
   return (
     <>
       <Header />
-      <div
-        className="container bg-custom"
-        style={{
-          marginTop: "56px",
-          padding: "2rem",
-          backgroundColor: "#fff8f0",
-          borderRadius: "10px"
-        }}>
-        <h2 style={{
-          textAlign: "center",
-          marginBottom: "2rem",
-          marginTop: "1rem"
-        }}>Cadastro</h2>
+      <div className="container bg-custom container-distance">
+        <h2>Cadastro</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="itens-cadastro-container"          >
@@ -275,13 +264,13 @@ export const CreateCake = () => {
                 <CardTitle><b>{c.name}</b></CardTitle>
                 <CardSubtitle className="mb-2"> <b>Categorias:</b> {c.category.join(", ")} </CardSubtitle>
                 <CardText> {c.description} </CardText>
-                <Button onClick={() => {
+                <Button variant="danger" onClick={() => {
                   if (c.id) {
                     handleShow(c.id);
                   } else {
                     console.warn("ID do bolo está indefinido.");
                   }
-                }} > <PiTrashThin /> </Button>
+                }} > <PiTrashThin size={20} color="white"/> </Button>
               </CardBody>
             </Card>
           ))

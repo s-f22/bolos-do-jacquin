@@ -72,7 +72,7 @@ export const CakeList = () => {
       <Header />
 
       {carouselItems.length > 0 && (
-        <Carousel style={{ marginTop: "54px" }}>
+        <Carousel className="container-carrossel">
           {carouselItems.map((item, idx) => (
             <Carousel.Item key={idx}>
               <Link to={`/cakes/${category || "search"}/${item.id}`}>

@@ -1,3 +1,13 @@
+.container-carrossel{
+    margin-top: 80px;
+}
+
+@media (max-width: 450px) {
+    .container-carrossel{
+        margin-top: 97px;
+    }
+}
+
 .texto-cards{
     font-family: 'Bellota', cursive;
 }

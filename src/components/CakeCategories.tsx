@@ -1,18 +1,8 @@
 import React from "react";
 import "./CakeCategories.css";
 import { Link } from "react-router-dom";
-import type { Color } from "react-bootstrap/esm/types";
-// import chocolate from '../assets/candy-bar.svg';
-// import { ReactComponent as ChocolateIcon } from '../assets/candy-bar.svg';
+import type { CakeCategory } from "../types/CakeCategory";
 
-
-type CakeCategory = {
-  id: string;
-  title: string;
-  nomeClasse: string;
-  cor_1: Color,
-  cor_2: Color
-};
 
 const categories: CakeCategory[] = [
   { id: "chocolate", title: "Chocolate", nomeClasse: "iconChocolate", cor_1: "#442300", cor_2: "#623402" },
